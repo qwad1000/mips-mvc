@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd ">
 
-<context:component-scan base-package="com.darkempire.*"/>
+<context:component-scan base-package="com.darkempire.controller"/>
 <mvc:annotation-driven />
 <mvc:resources mapping="/resources/**" location="/resources/" />
 

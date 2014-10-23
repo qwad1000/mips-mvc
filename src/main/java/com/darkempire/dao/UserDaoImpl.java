@@ -17,7 +17,6 @@ import java.util.List;
 public class UserDaoImpl implements UserDAO {
 
     @Autowired
-    //@Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
     @Override
@@ -41,7 +40,9 @@ public class UserDaoImpl implements UserDAO {
 
     @Override
     public List<User> listUser() {
-        return null;
+        List<User> list =  sessionFactory.getCurrentSession().createQuery("from User")
+                .list();
+        return list;
     }
 
     @Override

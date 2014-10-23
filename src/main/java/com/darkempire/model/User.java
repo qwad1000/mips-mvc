@@ -1,22 +1,19 @@
 package com.darkempire.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 /**
- * Created by Сергій on 22.10.2014.
+ * Created by Сергій on 24.10.2014.
  */
 @Entity
-@javax.persistence.Table(name = "users", schema = "public", catalog = "mips-db")
+@Table(name = "users", catalog = "mips", schema = "public")
 public class User {
     private int id;
     private String email;
     private String password;
 
-    @javax.persistence.Id
-    @javax.persistence.Column(name = "id", nullable = false, insertable = true, updatable = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
     }
@@ -25,8 +22,8 @@ public class User {
         this.id = id;
     }
 
-    @javax.persistence.Basic
-    @javax.persistence.Column(name = "email", nullable = false, insertable = true, updatable = true, length = 50)
+    @Basic
+    @Column(name = "email", nullable = true, insertable = true, updatable = true, length = 100)
     public String getEmail() {
         return email;
     }
@@ -35,8 +32,8 @@ public class User {
         this.email = email;
     }
 
-    @javax.persistence.Basic
-    @javax.persistence.Column(name = "password", nullable = false, insertable = true, updatable = true, length = 100)
+    @Basic
+    @Column(name = "password", nullable = true, insertable = true, updatable = true, length = 100)
     public String getPassword() {
         return password;
     }
@@ -50,11 +47,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User that = (User) o;
+        User user = (User) o;
 
-        if (id != that.id) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (id != user.id) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
 
         return true;
     }
