@@ -5,6 +5,9 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 
+# Idea
+.idea/
+
 # =========================
 # Operating System Files
 # =========================
