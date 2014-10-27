@@ -7,12 +7,28 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
   <head>
     <title>${title}</title>
   </head>
   <body>
-    ${message}
+  <table>
+  <thead>
+    <tr>
+        <th>Email</th>
+        <th>Password</th>
+    </tr>
+  </thead>
+      <c:forEach var="user" items="${list}">
+          <tr>
+              <td> <c:out value="${user.email}"/> </td>
+              <td> <c:out value="${user.password}"/> </td>
+          </tr>
+      </c:forEach>
+  </table>
+
+  фждылвмлыоватмлд
 
   </body>
 </html>

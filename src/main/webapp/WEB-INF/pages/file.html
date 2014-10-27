@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="ru">
+    <meta charset="UTF-8"/>
+    <title>Test html + thymeleaf</title>
+</head>
+<body>
+ <th:utext> Просто текст</th:utext>
+    <tr th:each="user: ${list}">
+        <p>
+        <td th:text="${user.email}">John</td>
+        <td th:text="${user.password}">Smith</td>
+        </p>
+    </tr>
+фдіводліовам
+</body>
+</html>

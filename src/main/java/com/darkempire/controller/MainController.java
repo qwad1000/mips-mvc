@@ -27,9 +27,9 @@ public class MainController {
         org.springframework.web.servlet.ModelAndView model = new org.springframework.web.servlet.ModelAndView();
         model.addObject("title", "Spring Security + Hibernate Example");
         List<User> users = userService.allUsers();
-        User user = users.size()>0 ? users.get(0) : null;
-        model.addObject("message",user!=null ? user.getEmail() : "asdfasdf");
-        model.setViewName("index");
+
+        model.addObject("list", users);
+        model.setViewName("file");
 
         return model;
     }
