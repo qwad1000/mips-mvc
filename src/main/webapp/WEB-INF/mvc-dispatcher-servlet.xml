@@ -11,18 +11,14 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd ">
 
+    <mvc:default-servlet-handler/><!-- Use spring servlet for all requests, including static resources -->
     <context:component-scan base-package="com.darkempire.controller"/>
     <mvc:annotation-driven />
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--&lt;!&ndash;<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>&ndash;&gt;-->
-        <!--<property name="prefix" value="/WEB-INF/pages/" />-->
-        <!--<property name="suffix" value=".jsp" />-->
-    <!--</bean>-->
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".html"/>
+        <property name="prefix" value="/WEB-INF/pages/templates/"/>
+        <!--<property name="suffix" value=".html"/>-->
         <property name="templateMode" value="HTML5"/>
         <property name="characterEncoding" value="UTF8"/> <!--в каком кодефайлы на диске-->
         <property name="cacheable" value="false"/>
@@ -30,11 +26,16 @@
 
     <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver"/>
+        <property name="additionalDialects">
+            <set>
+                <bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect"/>
+            </set>
+        </property>
     </bean>
     <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine"/>
         <property name="order" value="1"/>
         <property name="characterEncoding" value="UTF8"/><!--в каком коде отображается при запросе-->
-        <!--<property name="viewNames" value="/*"/>-->
+        <!--<property name="viewNames" value="/templates/"/>-->
     </bean>
 </beans>

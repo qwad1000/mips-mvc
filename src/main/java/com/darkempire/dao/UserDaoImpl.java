@@ -1,6 +1,7 @@
 package com.darkempire.dao;
 
 import com.darkempire.model.User;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,22 @@ public class UserDaoImpl implements UserDAO {
         users = sessionFactory.getCurrentSession()
                 .createQuery("from User where id=?")
                 .setParameter(0, id)
+                .list();
+
+        if(users.size()>0)
+            return users.get(0);
+        return null;
+    }
+
+    @Override
+    public User getUser(String email) {
+        List<User> users = new ArrayList<>();
+
+        Session session = sessionFactory.getCurrentSession();
+
+        users = session
+                .createQuery("from User where email=?")
+                .setParameter(0, email)
                 .list();
 
         if(users.size()>0)

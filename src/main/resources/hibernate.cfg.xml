@@ -15,6 +15,7 @@
       <!--<property name="hibernate.show_sql">true</property>-->
       <!--<property name="hibernate.format_sql">true</property>-->
       <mapping class="com.darkempire.model.User"/>
+      <mapping class="com.darkempire.model.UserRole"/>
 
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
