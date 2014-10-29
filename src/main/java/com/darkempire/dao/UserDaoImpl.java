@@ -24,10 +24,10 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public User addUser(User user) {
         Serializable ser = sessionFactory.getCurrentSession().save(user);
-        System.out.println(ser.getClass()); //todo: test this cast
+       //System.out.println(ser.getClass()); //todo: test this cast
 
 
-        User newUser = getUser(user.getEmail());        //warning: id check
+        User newUser = getUser(user.getEmail());
         return newUser;
     }
 
@@ -70,6 +70,7 @@ public class UserDaoImpl implements UserDAO {
 
     @Override
     public void removeUser(int id) {
-
+        User userToDelete = getUser(id);
+        sessionFactory.getCurrentSession().delete(userToDelete);
     }
 }

@@ -22,6 +22,7 @@
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/shared/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+        <remember-me key="uniqueAndSecret"/>
     </http>
 
 </beans:beans>
