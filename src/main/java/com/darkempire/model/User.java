@@ -1,7 +1,7 @@
 package com.darkempire.model;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by Сергій on 27.10.2014.
@@ -13,10 +13,11 @@ public class User {
     private String email;
     private String password;
     private boolean enabled;
-    private Collection<UserRole> userRolesById;
+    private Set<UserRole> userRolesById;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -79,12 +80,12 @@ public class User {
         return result;
     }
 
-    @OneToMany(mappedBy = "usersByUserId")
-    public Collection<UserRole> getUserRolesById() {
+    @OneToMany(mappedBy = "usersByUserId", fetch = FetchType.EAGER)
+    public Set<UserRole> getUserRolesById() {
         return userRolesById;
     }
 
-    public void setUserRolesById(Collection<UserRole> userRolesesById) {
+    public void setUserRolesById(Set<UserRole> userRolesesById) {
         this.userRolesById = userRolesesById;
     }
 }

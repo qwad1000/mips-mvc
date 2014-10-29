@@ -1,6 +1,7 @@
 package com.darkempire.services;
 
 import com.darkempire.model.User;
+import com.darkempire.services.validation.UserExistsException;
 
 import java.util.List;
 
@@ -9,7 +10,9 @@ import java.util.List;
  */
 public interface UserService {
 
-    public void addUser(User user);
+    public User registerUser(User user) throws UserExistsException;
+    @Deprecated
+    public void addUser(User user) throws UserExistsException;
     public User getUser(int id);
     public List<User> allUsers();
     public void removeUser(int id);

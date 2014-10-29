@@ -12,8 +12,17 @@ public class UserRole {
     private String role;
     private User usersByUserId;
 
+    public UserRole() {
+    }
+
+    public UserRole(String role, User usersByUserId) {
+        this.role = role;
+        this.usersByUserId = usersByUserId;
+    }
+
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }

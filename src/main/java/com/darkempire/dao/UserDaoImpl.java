@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +22,13 @@ public class UserDaoImpl implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public void addUser(User user) {
-        sessionFactory.getCurrentSession().save(user);
+    public User addUser(User user) {
+        Serializable ser = sessionFactory.getCurrentSession().save(user);
+        System.out.println(ser.getClass()); //todo: test this cast
+
+
+        User newUser = getUser(user.getEmail());        //warning: id check
+        return newUser;
     }
 
     @Override
@@ -65,13 +71,5 @@ public class UserDaoImpl implements UserDAO {
     @Override
     public void removeUser(int id) {
 
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 }

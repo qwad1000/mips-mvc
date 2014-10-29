@@ -1,0 +1,24 @@
+<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="846" measuredH="612" mockupW="800" mockupH="600">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="46" y="12" w="800" h="600" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>squareBreakline</borderStyle>
+        <text>MIPS%20-%20Admin%20page%0Ahttp%3A//mips.ua/admin</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::LinkBar" x="671" y="103" w="-1" h="-1" measuredW="142" measuredH="19" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>-1</selectedIndex>
+        <text>Home%2C%20Labs%2C%20Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::VerticalTabBar" x="97" y="132" w="698" h="427" measuredW="200" measuredH="120" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+        <color>16777215</color>
+        <position>left</position>
+        <text>%u0421%u043F%u0438%u0441%u043E%u043A%20%u043F%u043E%u043B%u044C%u0437%u043E%u0432%u0430%u0442%u0435%u043B%u0435%u0439%0A%u0421%u043F%u0438%u0441%u043E%u043A%20%u043B%u0430%u0431%u043E%u0440%u0430%u0442%u043E%u0440%u043D%u044B%u0445</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
