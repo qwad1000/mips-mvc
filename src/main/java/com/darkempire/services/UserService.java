@@ -16,5 +16,4 @@ public interface UserService {
     public User getUser(int id);
     public List<User> allUsers();
     public void removeUser(int id);
-
 }

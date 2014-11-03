@@ -27,7 +27,7 @@ public class MyUserDetailsService implements UserDetailsService {
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException, DataAccessException {
-        com.darkempire.model.User user = userDAO.getUser(email);
+        com.darkempire.model.User user = userDAO.get(email);
 //        if(user == null){
 //            throw new UsernameNotFoundException("No user with such username(or email)" + email);
 //        }

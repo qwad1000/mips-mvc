@@ -1,5 +1,6 @@
-package com.darkempire.dao;
+package com.darkempire.dao.implementation;
 
+import com.darkempire.dao.UserRoleDAO;
 import com.darkempire.model.UserRole;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Repository
 @SuppressWarnings("unchecked")
-public class UserRoleDAOImpl implements UserRoleDAO{
+public class UserRoleDAOImpl implements UserRoleDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

@@ -1,12 +1,12 @@
-package com.darkempire.dao;
+package com.darkempire.dao.implementation;
 
+import com.darkempire.dao.UserDAO;
 import com.darkempire.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,20 +22,10 @@ public class UserDaoImpl implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public User addUser(User user) {
-        Serializable ser = sessionFactory.getCurrentSession().save(user);
-       //System.out.println(ser.getClass()); //todo: test this cast
-
-
-        User newUser = getUser(user.getEmail());
-        return newUser;
-    }
-
-    @Override
-    public User getUser(int id) {
+    public User get(int id) {
         List<User> users = new ArrayList<>();
 
-        users = sessionFactory.getCurrentSession()
+        users = getCurrentSession()
                 .createQuery("from User where id=?")
                 .setParameter(0, id)
                 .list();
@@ -46,12 +36,10 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public User getUser(String email) {
+    public User get(String email) {
         List<User> users = new ArrayList<>();
 
-        Session session = sessionFactory.getCurrentSession();
-
-        users = session
+        users = getCurrentSession()
                 .createQuery("from User where email=?")
                 .setParameter(0, email)
                 .list();
@@ -62,15 +50,16 @@ public class UserDaoImpl implements UserDAO {
     }
 
     @Override
-    public List<User> listUser() {
-        List<User> list =  sessionFactory.getCurrentSession().createQuery("from User")
+    public List<User> list() {
+        List<User> list =  getCurrentSession().createQuery("from User")
                 .list();
         return list;
     }
 
     @Override
-    public void removeUser(int id) {
-        User userToDelete = getUser(id);
-        sessionFactory.getCurrentSession().delete(userToDelete);
+    public Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
     }
+
+
 }

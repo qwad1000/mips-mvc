@@ -16,22 +16,8 @@ import java.util.Locale;
 @Controller
 public class MainController {
 
-
     @Autowired
     UserService userService;
-
-//    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-//    public ModelAndView defaultPage() {
-//
-//        org.springframework.web.servlet.ModelAndView model = new org.springframework.web.servlet.ModelAndView();
-//        model.addObject("title", "Spring Security + Hibernate Example");
-//        List<User> users = userService.allUsers();
-//
-//        model.addObject("list", users);
-//        model.setViewName("file");
-//
-//        return model;
-//    }
 
     @RequestMapping("/")
     public String root(Locale locale) {

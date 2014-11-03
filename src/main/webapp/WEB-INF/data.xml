@@ -55,7 +55,7 @@
         </property>
     </bean>
 
-    <!--<bean id="userDao" class="com.darkempire.dao.UserDaoImpl">-->
+    <!--<bean id="userDao" class="com.darkempire.dao.implementation.UserDaoImpl">-->
         <!--<property name="sessionFactory" ref="sessionFactory" />-->
     <!--</bean>-->
 

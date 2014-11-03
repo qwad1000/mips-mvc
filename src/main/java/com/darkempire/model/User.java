@@ -1,6 +1,7 @@
 package com.darkempire.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -14,6 +15,8 @@ public class User {
     private String password;
     private boolean enabled;
     private Set<UserRole> userRolesById;
+    private Collection<Student> studentsById;
+    private Collection<UserRole> userRolesesById;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -87,5 +90,23 @@ public class User {
 
     public void setUserRolesById(Set<UserRole> userRolesesById) {
         this.userRolesById = userRolesesById;
+    }
+
+    @OneToMany(mappedBy = "usersByUserId")
+    public Collection<Student> getStudentsById() {
+        return studentsById;
+    }
+
+    public void setStudentsById(Collection<Student> studentsById) {
+        this.studentsById = studentsById;
+    }
+
+    @OneToMany(mappedBy = "usersByUserId")
+    public Collection<UserRole> getUserRolesesById() {
+        return userRolesesById;
+    }
+
+    public void setUserRolesesById(Collection<UserRole> userRolesesById) {
+        this.userRolesesById = userRolesesById;
     }
 }

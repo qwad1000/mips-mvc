@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
         roleList.add(new UserRole("ROLE_USER", user));
         user.setUserRolesById(roleList); //todo: Enum with roles
 
-        User result = userDAO.addUser(user);
+        User result = userDAO.save(user);
         userRoleDAO.saveUserRoles(roleList);//todo: read if it's crunch and i can only save user
         return result;
     }
@@ -49,29 +49,30 @@ public class UserServiceImpl implements UserService {
         if(userExists(user.getEmail())){
             throw new UserExistsException("Account with such mail exists:" + user.getEmail());
         }
-        userDAO.addUser(user);
+        userDAO.save(user);
     }
 
     private boolean userExists(String email){
-        User user = userDAO.getUser(email);
+        User user = userDAO.get(email);
         return user != null;
     }
 
     @Override
     @Transactional
     public User getUser(int id) {
-        return userDAO.getUser(id);
+        return userDAO.get(id);
     }
 
     @Override
     @Transactional
     public List<User> allUsers() {
-        return userDAO.listUser();
+        return userDAO.list();
     }
 
     @Override
     @Transactional
     public void removeUser(int id) {
-        userDAO.removeUser(id);
+        User user = getUser(id);
+        userDAO.remove(user);
     }
 }

@@ -1,23 +1,32 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
+    <property name="connection.url">jdbc:postgresql://localhost:5432/mips</property>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
 
-      <!--<property name="connection.url">jdbc:postgresql://localhost:5432/mips-db</property>-->
+    <!--<property name="connection.url">jdbc:postgresql://localhost:5432/mips-db</property>-->
     <!--<property name="connection.driver_class">org.postgresql.Driver</property>-->
 
     <!--<property name="connection.username">qwad1000</property>-->
     <!--<property name="connection.password">qwadros1000</property>-->
 
-      <!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>-->
-      <!--<property name="hibernate.show_sql">true</property>-->
-      <!--<property name="hibernate.format_sql">true</property>-->
-      <mapping class="com.darkempire.model.User"/>
-      <mapping class="com.darkempire.model.UserRole"/>
+    <!--<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>-->
+    <!--<property name="hibernate.show_sql">true</property>-->
+    <!--<property name="hibernate.format_sql">true</property>-->
+    <mapping class="com.darkempire.model.User"/>
+    <mapping class="com.darkempire.model.UserRole"/>
+    <mapping class="com.darkempire.model.Lab"/>
+    <mapping class="com.darkempire.model.LabBundle"/>
+    <mapping class="com.darkempire.model.Student"/>
+    <mapping class="com.darkempire.model.StudentsGroup"/>
+    <mapping class="com.darkempire.model.SubmitTry"/>
+    <mapping class="com.darkempire.model.Test"/>
+    <mapping class="com.darkempire.model.Variant"/>
 
-      <!-- DB schema will be updated if needed -->
+    <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>
