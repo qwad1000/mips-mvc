@@ -1,9 +1,10 @@
-package com.darkempire.services;
+package com.darkempire.services.impl;
 
 import com.darkempire.dao.UserDAO;
 import com.darkempire.dao.UserRoleDAO;
 import com.darkempire.model.User;
 import com.darkempire.model.UserRole;
+import com.darkempire.services.UserService;
 import com.darkempire.services.validation.UserExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,22 +35,12 @@ public class UserServiceImpl implements UserService {
         }
         user.setEnabled(true);
         Set<UserRole> roleList = new HashSet<>();
-        roleList.add(new UserRole("ROLE_USER", user));
-        user.setUserRolesById(roleList); //todo: Enum with roles
+        roleList.add(new UserRole("ROLE_USER", user));//todo: Enum with roles
+        user.setUserRolesById(roleList);
 
         User result = userDAO.save(user);
         userRoleDAO.saveUserRoles(roleList);//todo: read if it's crunch and i can only save user
         return result;
-    }
-
-    @Override
-    @Transactional
-    @Deprecated
-    public void addUser(User user) throws UserExistsException{
-        if(userExists(user.getEmail())){
-            throw new UserExistsException("Account with such mail exists:" + user.getEmail());
-        }
-        userDAO.save(user);
     }
 
     private boolean userExists(String email){

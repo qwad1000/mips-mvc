@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Сергій on 03.11.2014.
+ * Created by Сергій on 06.11.2014.
  */
 @Entity
 @Table(name = "lab", schema = "public", catalog = "mips")
@@ -16,7 +16,6 @@ public class Lab {
     private String description;
     private int maxPoint;
     private LabBundle labBundleByLabBundleId;
-    private Variant variantByVariantId;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -107,7 +106,7 @@ public class Lab {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lab_bundle_id", referencedColumnName = "id", nullable = false)
     public LabBundle getLabBundleByLabBundleId() {
         return labBundleByLabBundleId;
@@ -115,15 +114,5 @@ public class Lab {
 
     public void setLabBundleByLabBundleId(LabBundle labBundleByLabBundleId) {
         this.labBundleByLabBundleId = labBundleByLabBundleId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "variant_id", referencedColumnName = "id", nullable = false)
-    public Variant getVariantByVariantId() {
-        return variantByVariantId;
-    }
-
-    public void setVariantByVariantId(Variant variantByVariantId) {
-        this.variantByVariantId = variantByVariantId;
     }
 }

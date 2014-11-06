@@ -12,7 +12,7 @@
         <authentication-provider user-service-ref="userDetailsService"/>
     </authentication-manager>
 
-    <beans:bean id="userDetailsService" class="com.darkempire.services.MyUserDetailsService"/>
+    <beans:bean id="userDetailsService" class="com.darkempire.services.AuthoritiesService"/>
 
     <http auto-config="true" use-expressions="true">
         <!-- Login pages -->

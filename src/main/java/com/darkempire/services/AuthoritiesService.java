@@ -17,9 +17,9 @@ import java.util.*;
 /**
  * Created by Сергій on 27.10.2014.
  */
-public class MyUserDetailsService implements UserDetailsService {
+public class AuthoritiesService implements UserDetailsService {
 
-    //Logger logger = Logger.getLogger("MyUserDetailsService");
+    //Logger logger = Logger.getLogger("MyUserDetailsService");//todo
 
     @Autowired
     private UserDAO userDAO;

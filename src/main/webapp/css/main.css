@@ -1,5 +1,5 @@
 body {
-    font-family: sans;
+    font-family: sans-serif;
     font-size: 1em;
 }
 
@@ -10,4 +10,8 @@ p.error {
 
 div.logout {
     float: right;
+    background-color: azure;
+    border: solid;
+    border-radius: 5px;
+    margin: 10px;
 }

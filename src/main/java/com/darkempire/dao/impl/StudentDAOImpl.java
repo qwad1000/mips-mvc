@@ -1,4 +1,4 @@
-package com.darkempire.dao.implementation;
+package com.darkempire.dao.impl;
 
 import com.darkempire.dao.StudentDAO;
 import com.darkempire.model.Student;

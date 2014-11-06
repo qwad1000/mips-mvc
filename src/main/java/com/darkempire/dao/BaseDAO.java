@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Сергій on 03.11.2014.
  */
-public interface BaseDAO <T>{
+public interface BaseDAO <T> {
     default void update(T entity){
         getCurrentSession().update(entity);
     }

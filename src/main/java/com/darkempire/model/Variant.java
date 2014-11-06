@@ -4,14 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by Сергій on 03.11.2014.
+ * Created by Сергій on 06.11.2014.
  */
 @Entity
 @Table(name = "variant", schema = "public", catalog = "mips")
 public class Variant {
     private int id;
     private String mission;
-    private Collection<Lab> labsById;
     private Collection<SubmitTry> submitTriesById;
     private Collection<Test> testsById;
 
@@ -54,15 +53,6 @@ public class Variant {
         int result = id;
         result = 31 * result + (mission != null ? mission.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "variantByVariantId")
-    public Collection<Lab> getLabsById() {
-        return labsById;
-    }
-
-    public void setLabsById(Collection<Lab> labsById) {
-        this.labsById = labsById;
     }
 
     @OneToMany(mappedBy = "variantByVariantId")

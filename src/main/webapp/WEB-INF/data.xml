@@ -10,10 +10,7 @@
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
         http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
-
-        >
-
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
@@ -23,9 +20,9 @@
     </bean>
 
     <!--<bean id="messageSource"-->
-          <!--class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
-        <!--<property name="basename" value="classpath:messages" />-->
-        <!--<property name="defaultEncoding" value="UTF-8" />-->
+    <!--class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+    <!--<property name="basename" value="classpath:messages" />-->
+    <!--<property name="defaultEncoding" value="UTF-8" />-->
     <!--</bean>-->
 
     <!--<context:component-scan base-package="com.darkempire.*"/>-->
@@ -42,21 +39,22 @@
         <property name="configLocation">
             <value>classpath:hibernate.cfg.xml</value>
         </property>
-        <property name="packagesToScan" value="com.darkempire.dao" /><!--todo:-->
+        <property name="packagesToScan" value="com.darkempire.dao.*" /><!--todo:-->
         <!--<property name="configurationClass">-->
-            <!--<value>org.hibernate.cfg.AnnotationConfiguration</value>-->
+        <!--<value>org.hibernate.cfg.AnnotationConfiguration</value>-->
         <!--</property>-->
         <property name="hibernateProperties">
             <props>
                 <!--<prop key="hibernate.hbm2ddl.auto">create-drop</prop>-->
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop>
             </props>
         </property>
     </bean>
 
-    <!--<bean id="userDao" class="com.darkempire.dao.implementation.UserDaoImpl">-->
-        <!--<property name="sessionFactory" ref="sessionFactory" />-->
+    <!--<bean id="userDao" class="com.darkempire.dao.implpl">-->
+    <!--<property name="sessionFactory" ref="sessionFactory" />-->
     <!--</bean>-->
 
     <bean id="persistenceExceptionTranslationPostProcessor"
