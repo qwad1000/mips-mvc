@@ -18,14 +18,12 @@
         <p>This is a public page, but you can navigate to protected pages to trigger authentication.</p>
         <ul>
             <li>Go to <a href="admin/index.html" th:href="@{/admin/index.html}">administration zone</a> (only admins)</li>
-            <li>Go to <a href="user/index.html" th:href="@{/user/index.html}">user zone</a> (only users)</li>
+            <li>Go to <a href="user/index" th:href="@{/user/index}">user zone</a> (only users)</li>
             <li>Go to <a href="user/index.html" th:href="@{/shared/index.html}">shared zone</a> (both users and admins)</li>
         </ul>
         <h2>Exception handling</h2>
         <ul>
             <li>You can <a href="error.html" th:href="@{/simulateError.html}">simulate an exception</a> to see custom ErrorPage.</li>
         </ul>
-
-        <p>kлжыояамлдоывта</p>
     </body>
 </html>

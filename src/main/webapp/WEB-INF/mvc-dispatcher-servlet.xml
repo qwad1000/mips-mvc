@@ -13,21 +13,24 @@
 
     <mvc:default-servlet-handler/><!-- Use spring servlet for all requests, including static resources -->
     <context:component-scan base-package="com.darkempire.controller"/>
+    <context:annotation-config/>
     <mvc:annotation-driven />
     <mvc:resources mapping="/resources/**" location="/resources/" />
 
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
         <property name="prefix" value="/WEB-INF/pages/templates/"/>
-        <!--<property name="suffix" value=".html"/>-->
+        <property name="suffix" value=".html"/>
         <property name="templateMode" value="HTML5"/>
-        <property name="characterEncoding" value="UTF8"/> <!--в каком кодефайлы на диске-->
+        <property name="characterEncoding" value="UTF8"/> <!--в каком коде файлы на диске-->
         <property name="cacheable" value="false"/>
+        <property name="order" value="1"/>
     </bean>
 
     <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver"/>
         <property name="additionalDialects">
             <set>
+                <bean class="org.thymeleaf.spring4.dialect.SpringStandardDialect"/>
                 <bean class="org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect"/>
             </set>
         </property>
@@ -36,6 +39,11 @@
         <property name="templateEngine" ref="templateEngine"/>
         <property name="order" value="1"/>
         <property name="characterEncoding" value="UTF8"/><!--в каком коде отображается при запросе-->
-        <!--<property name="viewNames" value="/templates/"/>-->
+        <property name="viewNames">
+            <list>
+                <value>*</value>
+                <value>admin/*</value>
+            </list>
+        </property>
     </bean>
 </beans>

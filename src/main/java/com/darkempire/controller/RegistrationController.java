@@ -25,13 +25,13 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "registration.html", method = RequestMethod.GET)
+    @RequestMapping(value = "registration", method = RequestMethod.GET)
     public String showRegistrationForm(WebRequest request, Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "registration.html";
+        return "registration";
     }
-    @RequestMapping(value = "registration.html", method = RequestMethod.POST)
+    @RequestMapping(value = "registration", method = RequestMethod.POST)
     public ModelAndView registerUserAccount( @ModelAttribute("user") @Valid User account, BindingResult result, WebRequest request, Errors errors) {
         User registered = new User();
         if (!result.hasErrors()) {
@@ -41,9 +41,9 @@ public class RegistrationController {
             result.rejectValue("email", "An account for that username/email already exists. Please enter a different username.");
         }
         if (result.hasErrors()) {
-            return new ModelAndView("registration.html", "user", account);
+            return new ModelAndView("registration", "user", account);
         } else {
-            return new ModelAndView("user/successfullyRegistered.html", "user", account);
+            return new ModelAndView("user/successfullyRegistered", "user", account);
         }
     }
     private User createUserAccount(User account, BindingResult result) {

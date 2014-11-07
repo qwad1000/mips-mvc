@@ -20,13 +20,13 @@ public class AdminController {
     @Autowired
     private LabService labService;
 
-    @RequestMapping(value = "/admin/lab_bundles.html")
+    @RequestMapping(value = "/admin/lab_bundles")
     public String labBundles(WebRequest request, Model model){
         List<LabBundle> labBundleList = labService.getLabBundles();
         System.out.println(labBundleList.size());
         List<Lab> labs = (List)labBundleList.get(0).getLabsById();
         model.addAttribute("lab_bundle_list", labBundleList);
 
-        return "/admin/lab_bundles.html";
+        return "/admin/lab_bundles";
     }
 }

@@ -14,10 +14,6 @@ import java.util.List;
  */
 @Service
 public class LabServiceImpl implements LabService {
-//    @Autowired
-//    StudentDAO studentDAO;
-//    /*@Autowired
-//    StudentsGroupDAO studentsGroupDAO;*/
     @Autowired
     private LabBundleDAO labBundleDAO;
 
