@@ -39,11 +39,7 @@
         <property name="templateEngine" ref="templateEngine"/>
         <property name="order" value="1"/>
         <property name="characterEncoding" value="UTF8"/><!--в каком коде отображается при запросе-->
-        <property name="viewNames">
-            <list>
-                <value>*</value>
-                <value>admin/*</value>
-            </list>
-        </property>
+        <!--<property name="viewNames" value="*"/>-->
+        <!--<property name="excludedViewNames" value="*.xml" />-->
     </bean>
 </beans>

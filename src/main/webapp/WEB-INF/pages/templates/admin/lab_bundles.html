@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/main.css" th:href="@{/css/main.css}" />
 </head>
 <body>
-<div th:substituteby="index.html::logout"></div>
+<div th:substituteby="index::logout"></div>
 <div th:each="labbundle: ${lab_bundle_list}">
     <h2 th:text="${labbundle.getDescriprion()}"></h2>
     <!--<a th:text="Редагувати" th:href="/admin/lab_bundle.html"-->
