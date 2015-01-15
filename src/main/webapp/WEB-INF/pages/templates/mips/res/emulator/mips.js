@@ -64,7 +64,7 @@ function initCommandRamHolder() {
     };
     commandRamHolder.getCurrentPC = function () {
         return this.PC - 1;
-    }
+    };
     return commandRamHolder;
 }
 
