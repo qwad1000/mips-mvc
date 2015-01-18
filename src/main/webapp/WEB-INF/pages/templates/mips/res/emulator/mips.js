@@ -543,6 +543,16 @@ function initHardArray() {
         var values = getSTImm(b);
         registerHolder.set(values[1], registerHolder.get(values[0]) ^ values[2]);
     };
+    //sw
+    arr['101011'] = function (b,registerHolder, ramHolder, commandRamHolder){
+          var values = getTOffS(b);
+          ramHolder.setDex(values[2]+registerHolder.get(values[1]),values[0]);
+    };
+    //lw
+    arr['100011'] = function (b,registerHolder, ramHolder, commandRamHolder) {
+        var values = getTOffS(b);
+        registerHolder.set(values[0],ramHolder.getDex(values[2]+registerHolder.get(values[1])));
+    };
     return arr;
 }
 
@@ -555,6 +565,13 @@ function getDST(b) {
     return [BinToDex(b.substring(16, 21)), BinToDex(b.substring(6, 11)), BinToDex(b.substring(11, 16))];
 }
 
+/**
+ * @param {String} b
+ * @returns {*[]} T,S,Offset
+ */
+function getTOffS(b){
+    return [BinToDex(b.substring(11,16)),BinToDex(b.substring(6,11)),BinToDex(b.substring(16)];
+}
 /**
  *
  * @param {String} b
@@ -582,6 +599,8 @@ function getSTImm(b) {
 }
 
 //endregion
+
+
 
 
 
